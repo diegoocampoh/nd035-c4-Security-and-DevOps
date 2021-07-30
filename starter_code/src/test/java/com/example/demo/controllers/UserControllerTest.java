@@ -16,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
@@ -41,7 +40,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void createUser(){
+    public void createUser() {
         given(bCryptPasswordEncoder.encode(any())).willReturn("encodedPassword");
 
         CreateUserRequest request = new CreateUserRequest();
@@ -57,7 +56,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void createUserShouldFailIfPasswordDoesntMeetConditions(){
+    public void createUserShouldFailIfPasswordDoesntMeetConditions() {
         given(bCryptPasswordEncoder.encode(any())).willReturn("encodedPassword");
 
         CreateUserRequest request = new CreateUserRequest();
