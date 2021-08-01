@@ -2,6 +2,7 @@ package com.example.demo.model.persistence;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
@@ -81,5 +82,17 @@ public class UserOrder {
 		order.setUser(cart.getUser());
 		return order;
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		UserOrder userOrder = (UserOrder) o;
+		return Objects.equals(id, userOrder.id) && Objects.equals(items, userOrder.items) && Objects.equals(user, userOrder.user) && Objects.equals(total, userOrder.total);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, items, user, total);
+	}
 }
